@@ -1538,6 +1538,7 @@ MonoBehaviour:
   beatPrefab:
   - {fileID: 8863946126111873015, guid: 41c5f7be6c5eaf840ac0213677498a7b, type: 3}
   - {fileID: 8863946126111873015, guid: 3d0358fbb6a1bce48bca1cd589968009, type: 3}
+  - {fileID: 8863946126111873015, guid: 229eb98c1637bf748af666fb7de24843, type: 3}
   platformPrefabs:
   - {fileID: 6260909623838232093, guid: 0f6b6d18cb560ec49b360a85d6ab3f97, type: 3}
   - {fileID: 6260909623838232093, guid: 395a0b1d73538664e9ab9f2dcc22fef1, type: 3}
@@ -1753,8 +1754,10 @@ MonoBehaviour:
   currentTime: 0
   nextBeatTime: 0
   nextBeatTimeB: 0
+  nextBeatTimeC: 0
   interval: 0
   intervalB: 0
+  intervalC: 0
 --- !u!114 &963194234
 MonoBehaviour:
   m_ObjectHideFlags: 0

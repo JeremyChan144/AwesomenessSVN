@@ -208,23 +208,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void Cheats()
-    {
-        //Change notes speed
-        if(Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            musicManager.UpdateInterval(4,2);
-        }
-
-        else if(Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            musicManager.UpdateInterval(4,1);
-        }
-
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            musicManager.UpdateInterval(8,1);
-        }
-
+    {    
         //Change note type
         if(Input.GetKeyDown(KeyCode.Z))
         {

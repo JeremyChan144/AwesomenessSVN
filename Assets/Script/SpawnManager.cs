@@ -238,13 +238,19 @@ public class SpawnManager : MonoBehaviour
             case 0:
                 {
                     // Spawn the faster beat
-                    Instantiate(beatPrefab[1], BeatSpawnPoint.transform.position, Quaternion.identity);
+                    Instantiate(beatPrefab[0], BeatSpawnPoint.transform.position, Quaternion.identity);
                     break;
                 }
             case 1:
                 {
                     // Spawn the normal beat
-                    Instantiate(beatPrefab[0], BeatSpawnPoint.transform.position, Quaternion.identity);
+                    Instantiate(beatPrefab[1], BeatSpawnPoint.transform.position, Quaternion.identity);
+                    break;
+                }
+            case 2:
+                {
+                    //spawn another beat
+                    Instantiate(beatPrefab[2], BeatSpawnPoint.transform.position, Quaternion.identity);
                     break;
                 }
         }

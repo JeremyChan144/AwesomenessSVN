@@ -9,11 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3037869399823587261}
-  - component: {fileID: 1651238771973271908}
-  - component: {fileID: 928093684707708321}
-  - component: {fileID: 5893616034851273108}
+  - component: {fileID: 677342343008680355}
+  - component: {fileID: 8425501087371064247}
+  - component: {fileID: 3283783532273357346}
   m_Layer: 0
-  m_Name: WorldBeat(Base)
+  m_Name: WorldBeat(Point) 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34,7 +34,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &1651238771973271908
+--- !u!212 &677342343008680355
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -75,8 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 04f8618fd87a4b041b1a0edd8a149214, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 0.38431373}
+  m_Sprite: {fileID: 21300000, guid: 543c046ba9848824d969002d68b5e765, type: 3}
+  m_Color: {r: 0, g: 1, b: 0.77155066, a: 0.38431373}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -86,7 +86,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &928093684707708321
+--- !u!114 &8425501087371064247
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -99,9 +99,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startScale: 1
-  endScale: 30
-  duration: 2.5
---- !u!114 &5893616034851273108
+  endScale: 28
+  duration: 1.4
+--- !u!114 &3283783532273357346
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,4 +116,4 @@ MonoBehaviour:
   startAlpha: 1
   endAlpha: 0
   delay: 0
-  fadeDuration: 0.4
+  fadeDuration: 0.6

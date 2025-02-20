@@ -24,8 +24,10 @@ public class MusicSync : MonoBehaviour
     [HideInInspector] public double currentTime;      // Current time of the song
     [HideInInspector] public double nextBeatTime;    // Time for the next normal beat
     [HideInInspector] public double nextBeatTimeB;   // Time for the next faster beat
+    [HideInInspector] public double nextBeatTimeC;   // Time for the next faster beat
     [HideInInspector] public double interval;        // Time interval between normal beats
     [HideInInspector] public double intervalB;       // Time interval between faster beats
+    [HideInInspector] public double intervalC;       // Time interval between faster beats
 
     private SpawnManager spawnManagerRef;
     private CameraShake cameraShakeRef;
@@ -75,7 +77,7 @@ public class MusicSync : MonoBehaviour
             Debug.LogError("NoteDummy object cannot be found! Make sure it is assigned in the inspector.");
         }
 
-        UpdateInterval(beatsbeforeSpawn, fasterBeatsBeforeSpawn);
+        UpdateInterval(beatsbeforeSpawn);
 
         // Initialize the next beat times for normal and faster beats
         SyncStartTime();
@@ -97,27 +99,36 @@ public class MusicSync : MonoBehaviour
             if (currentTime >= nextBeatTime)
             {
                 // Spawn the normal beat
-                spawnManagerRef.SpawnNextWorldBeat(1);
+                spawnManagerRef.SpawnNextWorldBeat(0);
 
                 // Update the next normal beat time
                 nextBeatTime += interval;
 
-                //camera shake
+                // Camera shake for visual effect
                 StartCoroutine(cameraShakeRef.Shake(0.2f, 0.02f));
             }
 
-            // Spawn faster note if the current time has passed the next faster beat time
+           
+            // Spawn faster note for intervalB (if needed)
             if (currentTime >= nextBeatTimeB)
             {
-                // Spawn the faster note
-                spawnManagerRef.SpawnNote(currentNoteType);
+                // Spawn the faster beat (you could adjust this spawn method to do something different)
+                spawnManagerRef.SpawnNextWorldBeat(1);  // This could represent a "faster" beat
 
-                // Spawn the faster beat
-                spawnManagerRef.SpawnNextWorldBeat(0);
-
-                // Update the next faster beat time
+                // Update the next faster beat time (intervalB)
                 nextBeatTimeB += intervalB;
             }
+
+            
+           // Spawn notes based on intervalC (another faster beat or specific timing)
+           if (currentTime >= nextBeatTimeC)
+           {
+                spawnManagerRef.SpawnNote(currentNoteType);
+
+                // Update the next "intervalC" time
+                nextBeatTimeC += intervalC;
+           }
+           
         }
     }
 
@@ -125,16 +136,16 @@ public class MusicSync : MonoBehaviour
     {
         // Sync the first beat time based on the current DSP time and interval
         nextBeatTime = AudioSettings.dspTime + (interval * 1f);
-        nextBeatTimeB = AudioSettings.dspTime + (intervalB * 1f);
+        nextBeatTimeB = AudioSettings.dspTime + (interval * 1f);
+        nextBeatTimeC = AudioSettings.dspTime + (interval * 1f);
     }
 
-    public void UpdateInterval(int newFasterBeatsValue, int newBeatsValue)
+    public void UpdateInterval(int newBeatsValue)
     {
         // Calculate the interval between beats for normal and faster notes
         beatsbeforeSpawn = newBeatsValue;
         interval = (60.0 / bpm) * beatsbeforeSpawn;  // Normal interval for beats
-
-        fasterBeatsBeforeSpawn = newFasterBeatsValue;
-        intervalB = (60.0 / bpm) * fasterBeatsBeforeSpawn;  // Faster interval for the second note type
+        intervalB = (60.0 / bpm) * beatsbeforeSpawn * 2;
+        intervalC = (60.0 / bpm) * beatsbeforeSpawn * 6;
     }
 }
