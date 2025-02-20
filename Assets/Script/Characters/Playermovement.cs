@@ -144,6 +144,9 @@ public class Playermovement : MonoBehaviour
         {
             GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.transform.position,Quaternion.identity);
 
+            //make sure bullet is on ground level always
+            bullet.transform.position = new Vector3(bullet.transform.position.x, 0.5f, bullet.transform.position.z);
+
             // Get the Rigidbody component of the bullet
             Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
 

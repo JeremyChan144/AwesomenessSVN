@@ -23,11 +23,15 @@ public class MusicSync : MonoBehaviour
 
     [HideInInspector] public double currentTime;      // Current time of the song
     [HideInInspector] public double nextBeatTime;    // Time for the next normal beat
-    [HideInInspector] public double nextBeatTimeB;   // Time for the next faster beat
-    [HideInInspector] public double nextBeatTimeC;   // Time for the next faster beat
+    [HideInInspector] public double nextBeatTimeB;  
+    [HideInInspector] public double nextBeatTimeC;  
+
     [HideInInspector] public double interval;        // Time interval between normal beats
-    [HideInInspector] public double intervalB;       // Time interval between faster beats
-    [HideInInspector] public double intervalC;       // Time interval between faster beats
+    [HideInInspector] public double intervalB;   
+    [HideInInspector] public double intervalC;       
+
+
+    private double noteTravelTime = 0;
 
     private SpawnManager spawnManagerRef;
     private CameraShake cameraShakeRef;
@@ -127,8 +131,7 @@ public class MusicSync : MonoBehaviour
 
                 // Update the next "intervalC" time
                 nextBeatTimeC += intervalC;
-           }
-           
+           }          
         }
     }
 

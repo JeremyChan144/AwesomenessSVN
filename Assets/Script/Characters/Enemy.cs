@@ -32,6 +32,14 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            DestroySelf();
+        }
+    }
+
     IEnumerator Damage(GameObject obj)
     {
         canGetHit = false;
@@ -39,14 +47,18 @@ public class Enemy : MonoBehaviour
         Destroy(obj.gameObject);
         if (health <= 0)
         {
-            //explosion
-            Instantiate(explosion,obj.transform.position,Quaternion.identity);
-
-            Destroy(gameObject);
+            DestroySelf();
             yield break;
         }
 
         yield return new WaitForSeconds(0.2f);
         canGetHit = true;
+    }
+
+    void DestroySelf()
+    {
+        //explosion
+        Instantiate(explosion, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 }
