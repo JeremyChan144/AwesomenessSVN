@@ -69,7 +69,7 @@ public class NoteLogic : MonoBehaviour
         }
 
         //dynamic duration of time taken for notes
-        duration = (float)MusicSync.Instance.interval * MusicSync.Instance.speedDivider;
+        duration = (float)MusicSync.Instance.noteTravelTime;
     }
 
     void Update()

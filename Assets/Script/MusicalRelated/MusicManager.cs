@@ -24,14 +24,13 @@ public class MusicSync : MonoBehaviour
     [HideInInspector] public double currentTime;      // Current time of the song
     [HideInInspector] public double nextBeatTime;    // Time for the next normal beat
     [HideInInspector] public double nextBeatTimeB;  
-    [HideInInspector] public double nextBeatTimeC;  
+    [HideInInspector] public double nextBeatTimeZ;
 
     [HideInInspector] public double interval;        // Time interval between normal beats
     [HideInInspector] public double intervalB;   
-    [HideInInspector] public double intervalC;       
+    [HideInInspector] public double intervalZ;
 
-
-    private double noteTravelTime = 0;
+    public double noteTravelTime = 0;
 
     private SpawnManager spawnManagerRef;
     private CameraShake cameraShakeRef;
@@ -109,7 +108,7 @@ public class MusicSync : MonoBehaviour
                 nextBeatTime += interval;
 
                 // Camera shake for visual effect
-                StartCoroutine(cameraShakeRef.Shake(0.2f, 0.02f));
+                StartCoroutine(cameraShakeRef.Shake(0.1f, 0.01f));
             }
 
            
@@ -124,23 +123,26 @@ public class MusicSync : MonoBehaviour
             }
 
             
-           // Spawn notes based on intervalC (another faster beat or specific timing)
-           if (currentTime >= nextBeatTimeC)
-           {
+            
+            // Spawn notes based on intervalC (another faster beat or specific timing)
+            if (currentTime >= nextBeatTimeZ - noteTravelTime)
+            {
                 spawnManagerRef.SpawnNote(currentNoteType);
 
                 // Update the next "intervalC" time
-                nextBeatTimeC += intervalC;
-           }          
+                nextBeatTimeZ += intervalZ;
+            }    
+           
         }
     }
 
     void SyncStartTime()
     {
         // Sync the first beat time based on the current DSP time and interval
-        nextBeatTime = AudioSettings.dspTime + (interval * 1f);
-        nextBeatTimeB = AudioSettings.dspTime + (interval * 1f);
-        nextBeatTimeC = AudioSettings.dspTime + (interval * 1f);
+        nextBeatTime = nextBeatTimeB = nextBeatTimeZ  = AudioSettings.dspTime + (interval * 1f);
+
+        // Time for notes travel
+        noteTravelTime = interval * speedDivider;
     }
 
     public void UpdateInterval(int newBeatsValue)
@@ -149,6 +151,6 @@ public class MusicSync : MonoBehaviour
         beatsbeforeSpawn = newBeatsValue;
         interval = (60.0 / bpm) * beatsbeforeSpawn;  // Normal interval for beats
         intervalB = (60.0 / bpm) * beatsbeforeSpawn * 2;
-        intervalC = (60.0 / bpm) * beatsbeforeSpawn * 6;
+        intervalZ = (60.0 / bpm) * beatsbeforeSpawn * 4;
     }
 }
