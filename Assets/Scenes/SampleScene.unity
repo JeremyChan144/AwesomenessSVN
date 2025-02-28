@@ -1754,10 +1754,11 @@ MonoBehaviour:
   currentTime: 0
   nextBeatTime: 0
   nextBeatTimeB: 0
-  nextBeatTimeC: 0
+  nextBeatTimeZ: 0
   interval: 0
   intervalB: 0
-  intervalC: 0
+  intervalZ: 0
+  noteTravelTime: 0
 --- !u!114 &963194234
 MonoBehaviour:
   m_ObjectHideFlags: 0
