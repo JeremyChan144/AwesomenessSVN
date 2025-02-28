@@ -1,0 +1,22 @@
+Movement
+- Middle mouse (moving around)
+- Different views (Numlock, 1,2,3,4)
+
+Normal
+- Rotate (R)
+- Scale (S)
+- Reset Pos (Alt + G)
+- Set new Pivot (Alt + A)
+- Reset pivot (Shift + S)
+
+Edit
+- Edit mode (Tab)
+- Select (Right click)	
+- Marque select (B)
+- Extrude (E)
+- Edge tools (Ctrl E)
+- Insert edge loop (Ctrl R)
+- Proportional editing (O) - Grab then scroll up and down to adjust value
+- Merge (M)
+- Subdivide (W)
+- See location (N)
