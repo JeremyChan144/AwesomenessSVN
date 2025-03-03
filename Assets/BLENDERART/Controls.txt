@@ -17,6 +17,6 @@ Edit
 - Edge tools (Ctrl E)
 - Insert edge loop (Ctrl R)
 - Proportional editing (O) - Grab then scroll up and down to adjust value
-- Merge (M)
+- Merge (Ctrl J)
 - Subdivide (W)
 - See location (N)
